@@ -6,6 +6,11 @@ public enum Action {
   Exit = 3,
 }
 
+public enum Language {
+  Eng = 0,
+  Ru = 1,
+}
+
 namespace CipherLab {
   public static class UI {
     public static string greetings = $"The second lab {Environment.NewLine}Made by: Student of 403th group Sukhoverikov Denis";
@@ -57,6 +62,23 @@ namespace CipherLab {
         }
       }
       return (InputType)chosenType;
+    }
+
+    public static Language AskLang() {
+      Language? choosenLanguage = null;
+      ConsoleKeyInfo pressedKey;
+      while (choosenLanguage == null) {
+        Console.WriteLine($"{Environment.NewLine}Press R for Russian language");
+        Console.WriteLine("Press E for English language");
+        pressedKey = Console.ReadKey();
+        if (pressedKey.Key == ConsoleKey.R) {
+          choosenLanguage = Language.Ru;
+        }
+        else if (pressedKey.Key == ConsoleKey.E) {
+          choosenLanguage = Language.Eng;
+        }
+      }
+      return (Language)choosenLanguage;
     }
 
     public static Action AskAction() {
