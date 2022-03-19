@@ -11,6 +11,11 @@ public enum Language {
   Ru = 1,
 }
 
+public enum Cipher {
+  Atbash = 0,
+  Vigenere = 1,
+}
+
 namespace CipherLab {
   public static class UI {
     public static string greetings = $"The second lab {Environment.NewLine}Made by: Student of 403th group Sukhoverikov Denis";
@@ -102,6 +107,24 @@ namespace CipherLab {
         }
       }
       return (Action)chosenAction;
+    }
+
+    public static Cipher AskCipher() {
+      Cipher? cipher = null;
+      ConsoleKeyInfo pressedKey;
+      while (cipher == null) {
+        Console.WriteLine($"{Environment.NewLine}Which cipher do you want to use?");
+        Console.WriteLine("Press A for Atbash");
+        Console.WriteLine("Press V for Vigenere");
+        pressedKey = Console.ReadKey();
+        if (pressedKey.Key == ConsoleKey.A) {
+          cipher = Cipher.Atbash;
+        }
+        else if (pressedKey.Key == ConsoleKey.V) {
+          cipher = Cipher.Vigenere;
+        }
+      }
+      return (Cipher)cipher;
     }
   }
 }
