@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
 public enum Action {
   Encode = 0,
   Decode = 1,
   SaveOrigin = 2,
   SaveCrypted = 3,
-  Exit = 4,
+  InputText = 4,
+  ShowCryptedText = 5,
+  ShowOriginText = 6,
+  Exit = 7,
 }
 
 public enum Language {
@@ -90,17 +94,29 @@ namespace CipherLab {
       ConsoleKeyInfo pressedKey;
       while (chosenAction == null) {
         Console.WriteLine($"{Environment.NewLine}What do you want to do?");
+        Console.WriteLine("Press I to Input text");
         Console.WriteLine("Press E to Encode");
         Console.WriteLine("Press D to Decode");
+        Console.WriteLine("Press O to Show putted text");
+        Console.WriteLine("Press C to Show modified text");
         Console.WriteLine("Press S to Save initial data in file");
         Console.WriteLine("Press Shift + S to Save crypted data in file");
-        Console.WriteLine("Press Esc to Exit");
+        Console.WriteLine("Press Shift + E to Exit");
         pressedKey = Console.ReadKey();
-        if (pressedKey.Key == ConsoleKey.E) {
+        if (pressedKey.Key == ConsoleKey.I) {
+          chosenAction = Action.InputText;
+        }
+        else if (pressedKey.Key == ConsoleKey.E & pressedKey.Modifiers != ConsoleModifiers.Shift) {
           chosenAction = Action.Encode;
         }
         else if (pressedKey.Key == ConsoleKey.D) {
           chosenAction = Action.Decode;
+        }
+        else if (pressedKey.Key == ConsoleKey.O) {
+          chosenAction = Action.ShowOriginText;
+        }
+        else if (pressedKey.Key == ConsoleKey.C) {
+          chosenAction = Action.ShowCryptedText;
         }
         else if (pressedKey.Key == ConsoleKey.S & pressedKey.Modifiers != ConsoleModifiers.Shift) {
           chosenAction = Action.SaveOrigin;
@@ -108,11 +124,17 @@ namespace CipherLab {
         else if (pressedKey.Key == ConsoleKey.S & pressedKey.Modifiers == ConsoleModifiers.Shift) {
           chosenAction = Action.SaveCrypted;
         }
-        else if (pressedKey.Key == ConsoleKey.Escape) {
+        else if (pressedKey.Key == ConsoleKey.E & pressedKey.Modifiers == ConsoleModifiers.Shift) {
           chosenAction = Action.Exit;
         }
       }
       return (Action)chosenAction;
+    }
+
+    public static void ShowText(List<string> text) {
+      foreach (string row in text) {
+        Console.WriteLine(row);
+      }
     }
 
     public static Cipher AskCipher() {
