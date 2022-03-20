@@ -3,14 +3,13 @@ using System.Collections.Generic;
 
 namespace CipherLab {
   public class Atbash : ICIpher {
-    public string Encode(string text) {
+    public string Encode(string text, Language language) {
       List<int> codes = new List<int>();
       string newText = "";
       foreach (char letter in text) {
         codes.Add((int)letter);
       }
       Console.WriteLine($"{Environment.NewLine}What language do you want to encode?");
-      Language language = UI.AskLang();
       if (language == Language.Ru) {
         Console.WriteLine($"{Environment.NewLine}Please pay attention that yo letter is not changing!");
         for (int i = 0; i < codes.Count; i++) {
@@ -45,8 +44,8 @@ namespace CipherLab {
       return newText;
     }
     
-    public string Decode(string text) {
-      return Encode(text);
+    public string Decode(string text, Language language) {
+      return Encode(text, language);
     }
   }
 }
