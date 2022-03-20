@@ -66,5 +66,34 @@ namespace CipherLab {
       }
     }
 
+    public static List<string> ReadFromFile(string name) {
+      FileInfo file = new FileInfo(name);
+      List<string> text = new List<string>();
+      while (!file.Exists) {
+        Console.WriteLine($"{Environment.NewLine}This file doesn`t exist!");
+        Console.WriteLine($"{Environment.NewLine}Print path to another file:");
+        name = Console.ReadLine();
+        file = new FileInfo(name);
+      }
+      using (StreamReader sr = file.OpenText()) {
+        string line = "";
+        while ((line = sr.ReadLine()) != null) {
+          text.Add(line);
+        }
+        int emptyCounter = 0;
+        foreach (string row in text) {
+          if (row.Trim() == "") {
+            emptyCounter++;
+          }
+        }
+        if (emptyCounter == text.Count) {
+          text = null;
+        }
+        if (text == null) {
+          Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}File was empty.");
+        }
+        return text;
+      }
+    }
   }
 }
