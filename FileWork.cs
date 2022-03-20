@@ -35,7 +35,7 @@ namespace CipherLab {
       else return false;
     }
 
-    public static void SaveToFile(string name) {
+    public static void SaveToFile(string name, List<string> text) {
       FileInfo file = new FileInfo(name);
       if (file.Exists) {
         bool isOverwrite = false;
@@ -59,7 +59,11 @@ namespace CipherLab {
           file.Delete();
         }
       }
-      //Not ready yet
+      using (StreamWriter sw = file.AppendText()) {
+        foreach (string row in text) {
+          sw.WriteLine(row);
+        }
+      }
     }
 
   }

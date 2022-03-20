@@ -100,7 +100,7 @@ namespace CipherLab {
         Console.WriteLine("Press O to Show putted text");
         Console.WriteLine("Press C to Show modified text");
         Console.WriteLine("Press S to Save initial data in file");
-        Console.WriteLine("Press Shift + S to Save crypted data in file");
+        Console.WriteLine("Press Shift + S to Save modified data in file");
         Console.WriteLine("Press Shift + E to Exit");
         pressedKey = Console.ReadKey();
         if (pressedKey.Key == ConsoleKey.I) {
