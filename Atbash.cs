@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CipherLab {
   public class Atbash : ICIpher {
@@ -40,17 +37,16 @@ namespace CipherLab {
           //changes if lowercase
           else if (codes[i] >= 97 & codes[i] <= 122) {
             int shift = 122 - codes[i]; // 122 is code of the last lower latin letter in UTF-8
-            codes[i] = 97 + shift; //97 is code of the first lower latin letter in UTF-8
+            codes[i] = 97 + shift; //97 is code of the first lower latin letter in UTF-8`
           }
           newText += (char)codes[i];
         }
       }
       return newText;
     }
-
+    
     public string Decode(string text) {
-      string s = "";
-      return s;
+      return Encode(text);
     }
   }
 }
