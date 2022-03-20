@@ -54,12 +54,9 @@ namespace CipherLab {
       InputType? chosenType = null;
       ConsoleKeyInfo pressedKey;
       while (chosenType == null) {
-        Console.WriteLine($"{Environment.NewLine}Press 'R' for random input, 'M' for manual input, 'F' for input from file");
+        Console.WriteLine($"{Environment.NewLine}Press 'M' for manual input, 'F' for input from file");
         pressedKey = Console.ReadKey();
-        if (pressedKey.Key == ConsoleKey.R) {
-          chosenType = InputType.Random;
-        }
-        else if (pressedKey.Key == ConsoleKey.M) {
+        if (pressedKey.Key == ConsoleKey.M) {
           chosenType = InputType.Manual;
         }
         else if (pressedKey.Key == ConsoleKey.F) {
