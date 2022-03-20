@@ -3,7 +3,9 @@
 public enum Action {
   Encode = 0,
   Decode = 1,
-  Exit = 3,
+  SaveOrigin = 2,
+  SaveCrypted = 3,
+  Exit = 4,
 }
 
 public enum Language {
@@ -90,7 +92,8 @@ namespace CipherLab {
         Console.WriteLine($"{Environment.NewLine}What do you want to do?");
         Console.WriteLine("Press E to Encode");
         Console.WriteLine("Press D to Decode");
-        Console.WriteLine("Press S to Save data in file");
+        Console.WriteLine("Press S to Save initial data in file");
+        Console.WriteLine("Press Shift + S to Save crypted data in file");
         Console.WriteLine("Press Esc to Exit");
         pressedKey = Console.ReadKey();
         if (pressedKey.Key == ConsoleKey.E) {
@@ -98,6 +101,12 @@ namespace CipherLab {
         }
         else if (pressedKey.Key == ConsoleKey.D) {
           chosenAction = Action.Decode;
+        }
+        else if (pressedKey.Key == ConsoleKey.S & pressedKey.Modifiers != ConsoleModifiers.Shift) {
+          chosenAction = Action.SaveOrigin;
+        }
+        else if (pressedKey.Key == ConsoleKey.S & pressedKey.Modifiers == ConsoleModifiers.Shift) {
+          chosenAction = Action.SaveCrypted;
         }
         else if (pressedKey.Key == ConsoleKey.Escape) {
           chosenAction = Action.Exit;
