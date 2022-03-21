@@ -9,6 +9,7 @@ namespace CipherLab {
       List<string> text = new List<string>();
       text = null;
       cryptedText = null;
+      ICIpher crypter = null;
       while (true) {
         Action action = UI.AskAction();
         if (action == Action.Encode) {
@@ -18,15 +19,15 @@ namespace CipherLab {
           }
           Cipher cipher = UI.AskCipher();
           if (cipher == Cipher.Atbash) {
-            Atbash crypter = new Atbash();
-            cryptedText = new List<string>();
-            Language language = UI.AskLang();
-            foreach (string row in text) {
-              cryptedText.Add(crypter.Encode(row, language));
-            }
+            crypter = new Atbash();
           }
           else {
             //Vigenere is not ready yet
+          }
+          cryptedText = new List<string>();
+          Language language = UI.AskLang();
+          foreach (string row in text) {
+            cryptedText.Add(crypter.Encode(row, language));
           }
         }
         else if (action == Action.Decode) {
@@ -36,15 +37,15 @@ namespace CipherLab {
           }
           Cipher cipher = UI.AskCipher();
           if (cipher == Cipher.Atbash) {
-            Atbash crypter = new Atbash();
-            cryptedText = new List<string>();
-            Language language = UI.AskLang();
-            foreach (string row in text) {
-              cryptedText.Add(crypter.Decode(row, language));
-            }
+            crypter = new Atbash();
           }
           else {
             //Vigenere is not ready yet
+          }
+          cryptedText = new List<string>();
+          Language language = UI.AskLang();
+          foreach (string row in text) {
+            cryptedText.Add(crypter.Decode(row, language));
           }
         }
         else if (action == Action.InputText) {
