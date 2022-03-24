@@ -154,5 +154,48 @@ namespace CipherLab {
       }
       return (Cipher)cipher;
     }
+
+    public static string AskKeyword(Language lang) {
+      Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}Please, enter the keyword:");
+      string keyword = Console.ReadLine().ToUpper();
+      bool badSymbol = true;
+      bool isShowed = false;
+      if (lang == Language.Ru) {
+        while (badSymbol) {
+          for (int i = 0; i < keyword.Length; i++) {
+            if ((int)keyword[i] < 1040 | (int)keyword[i] > 1071) { //Borders of first and last cyrillic letters in UTF-8
+              badSymbol = true;
+            }
+            else {
+              badSymbol = false;
+            }
+          }
+          if (badSymbol & !isShowed) {
+            Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}There is wrong symbols in your keyword. Use only cyrillic letters without Yo.");
+            isShowed = true;
+            keyword = Console.ReadLine().ToUpper();
+          }
+        }
+        return keyword;
+      }
+      else {
+        while (badSymbol) {
+          for (int i = 0; i < keyword.Length; i++) {
+            if ((int)keyword[i] < 65 | (int)keyword[i] > 90) { //Borders of first and last latin letters in UTF-8
+              badSymbol = true;
+            }
+            else {
+              badSymbol = false;
+            }
+          }
+          if (badSymbol & !isShowed) {
+            Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}There is wrong symbols in your keyword. Use only latin letters.");
+            isShowed = true;
+            keyword = Console.ReadLine().ToUpper();
+          }
+        }
+        return keyword;
+      }
+    }
   }
 }

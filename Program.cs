@@ -4,6 +4,7 @@ using System.Collections.Generic;
 namespace CipherLab {
   public class Program {
     static void Main(string[] args) {
+      Language language;
       UI.StartInfo();
       List<string> cryptedText = new List<string>();
       List<string> text = new List<string>();
@@ -22,10 +23,10 @@ namespace CipherLab {
             crypter = new Atbash();
           }
           else {
-            //Vigenere is not ready yet
+            crypter = new Vigenere();
           }
           cryptedText = new List<string>();
-          Language language = UI.AskLang();
+          language = UI.AskLang();
           foreach (string row in text) {
             cryptedText.Add(crypter.Encode(row, language));
           }
@@ -40,10 +41,10 @@ namespace CipherLab {
             crypter = new Atbash();
           }
           else {
-            //Vigenere is not ready yet
+            crypter = new Vigenere();
           }
           cryptedText = new List<string>();
-          Language language = UI.AskLang();
+          language = UI.AskLang();
           foreach (string row in text) {
             cryptedText.Add(crypter.Decode(row, language));
           }
