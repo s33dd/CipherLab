@@ -156,8 +156,30 @@ namespace CipherLab {
     }
 
     public static string AskKeyword(Language lang) {
-      Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}Please, enter the keyword:");
+      Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}Please, enter the keyword or print 'RANDOM!' for random generation.");
+      Console.WriteLine("Useless for decoding but maybe you`re lucky and will get right keyword.");
       string keyword = Console.ReadLine().ToUpper();
+      if (keyword == "RANDOM!") {
+        Random random = new Random();
+        keyword = "";
+        int upperBorder = 19;
+        int lowerBorder = 7;
+        int quantity = random.Next(lowerBorder, upperBorder);
+        if (lang == Language.Ru) {
+          lowerBorder = (int)'А';
+          upperBorder = (int)'Я';
+        }
+        else {
+          lowerBorder = (int)'A';
+          upperBorder = (int)'Z';
+        }
+        for (int i = 0; i < quantity; i++) {
+          keyword += (char)random.Next(lowerBorder, upperBorder);
+        }
+        Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}{keyword} — is your keyword.");
+        Console.WriteLine("Remember it! Without it you can`t decode your message in a simple way.");
+        return keyword;
+      }
       bool badSymbol = true;
       bool isShowed = false;
       if (lang == Language.Ru) {
