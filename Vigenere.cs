@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CipherLab {
-  internal class Vigenere : ICIpher {
+  public class Vigenere : ICIpher {
     private char[][] tabulaRecta;
     private string keyword;
     private int letters;
@@ -27,6 +27,10 @@ namespace CipherLab {
           tabulaRecta[i][0] = lastElement; // First element of current strings is last element of previous
         }
       }
+    }
+    public string Keyword { 
+      get { return keyword; }
+      set { keyword = value; }
     }
     public string Encode(string text, Language lang) {
       int code;

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CipherLab", "CipherLab.csproj", "{E19811DF-A6B3-4ABB-8AB3-DD3ACDBB419D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CipherLab", "CipherLab.csproj", "{E19811DF-A6B3-4ABB-8AB3-DD3ACDBB419D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CipherLabTests", "..\CipherLabTests\CipherLabTests.csproj", "{43385F57-4B12-4315-AC5C-7320F0293D40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{E19811DF-A6B3-4ABB-8AB3-DD3ACDBB419D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E19811DF-A6B3-4ABB-8AB3-DD3ACDBB419D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E19811DF-A6B3-4ABB-8AB3-DD3ACDBB419D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43385F57-4B12-4315-AC5C-7320F0293D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43385F57-4B12-4315-AC5C-7320F0293D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43385F57-4B12-4315-AC5C-7320F0293D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43385F57-4B12-4315-AC5C-7320F0293D40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

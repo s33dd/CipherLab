@@ -9,7 +9,6 @@ namespace CipherLab {
       foreach (char letter in text) {
         codes.Add((int)letter);
       }
-      Console.WriteLine($"{Environment.NewLine}What language do you want to encode?");
       if (language == Language.Ru) {
         Console.WriteLine($"{Environment.NewLine}Please pay attention that yo letter is not changing!");
         for (int i = 0; i < codes.Count; i++) {
