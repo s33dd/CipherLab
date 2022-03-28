@@ -192,11 +192,14 @@ namespace CipherLab {
               badSymbol = false;
             }
           }
-          if (badSymbol & !isShowed) {
-            Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}There is wrong symbols in your keyword. Use only cyrillic letters without Yo.");
+          if (badSymbol) {
+            if (!isShowed) {
+              Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}There is wrong symbols in your keyword. Use only cyrillic letters without Yo.");
+            }
             isShowed = true;
             keyword = Console.ReadLine().ToUpper();
           }
+          isShowed = false;
         }
         return keyword;
       }
@@ -210,11 +213,14 @@ namespace CipherLab {
               badSymbol = false;
             }
           }
-          if (badSymbol & !isShowed) {
-            Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}There is wrong symbols in your keyword. Use only latin letters.");
+          if (badSymbol) {
+            if (!isShowed) {
+              Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}There is wrong symbols in your keyword. Use only latin letters.");
+            }
             isShowed = true;
             keyword = Console.ReadLine().ToUpper();
           }
+          isShowed = false;
         }
         return keyword;
       }
